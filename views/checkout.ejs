@@ -1,0 +1,330 @@
+<!doctype html>
+<html class="no-js" lang="pt">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        <%= pageName %> | <%= title %>
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="/assets/images/favicon.png" type="img/x-icon" rel="shortcut icon">
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/iconfont.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/helper.css">
+    <link rel="stylesheet" href="/assets/css/plugins/plugins.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <style>
+        /* For Webkit browsers */
+        .checkout-cart-total {
+            height: 600px !important;
+            overflow-y: auto;
+            /* Ensure the scrollbar only appears when needed */
+            scrollbar-width: thin;
+            /* Firefox */
+            scrollbar-color: #888 #f1f1f1;
+            /* Firefox scrollbar color */
+
+            /* Webkit browsers (Chrome, Safari) */
+            &::-webkit-scrollbar {
+                width: 6px;
+                /* Adjust this value to change the width of the scrollbar */
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #888;
+                /* Color of the scrollbar thumb */
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: #f1f1f1;
+                /* Color of the scrollbar track */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+        <!--Header section start-->
+        <%- include('header.ejs', {category}) %>
+            <!--Header section end-->
+
+
+            <!-- Page Banner Section Start -->
+            <%- include('breadcrumb') %>
+                <!-- Page Banner Section End -->
+
+
+                <!--Checkout section start-->
+                <div
+                    class="checkout-section section pt-90 pt-lg-70 pt-md-60 pt-sm-50 pt-xs-40  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+
+                                <!-- Checkout Form Start-->
+                                <form action="#" class="checkout-form">
+                                    <div class="row row-40">
+
+                                        <div class="col-lg-7">
+
+                                            <!-- Billing Address -->
+                                            <div id="billing-form" class="mb-10">
+                                                <h4 class="checkout-title">Endereço de faturação</h4>
+
+                                                <div class="row">
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Nome próprio*</label>
+                                                        <input type="text" placeholder="Nome próprio">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Apelido*</label>
+                                                        <input type="text" placeholder="Apelido">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Endereço de e-mail*</label>
+                                                        <input type="email" placeholder="Endereço de e-mail">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Telefone n*</label>
+                                                        <input type="text" placeholder="Telefone n">
+                                                    </div>
+
+                                                    <div class="col-12 mb-20">
+                                                        <label>Nome da empresa</label>
+                                                        <input type="text" placeholder="Nome da empresa">
+                                                    </div>
+
+                                                    <div class="col-12 mb-20">
+                                                        <label>Endereço*</label>
+                                                        <input type="text" placeholder="Endereço 1">
+                                                        <input type="text" placeholder="Endereço 2">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>País*</label>
+                                                        <select class="nice-select">
+                                                            <%- include('countries.ejs') %>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Localidade/Cidade*</label>
+                                                        <input type="text" placeholder="Localidade/Cidade">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Estado*</label>
+                                                        <input type="text" placeholder="Estado">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Código Postal*</label>
+                                                        <input type="text" placeholder="Código Postal">
+                                                    </div>
+
+                                                    <div class="col-12 mb-20">
+                                                        <!-- <div class="check-box">
+                                                            <input type="checkbox" id="create_account">
+                                                            <label for="create_account">Create an Acount?</label>
+                                                        </div> -->
+                                                        <!-- <div class="check-box">
+                                                            <input type="checkbox" id="shiping_address" data-shipping>
+                                                            <label for="shiping_address">Ship to Different
+                                                                Address</label>
+                                                        </div> -->
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Shipping Address -->
+                                            <div id="shipping-form">
+                                                <h4 class="checkout-title">Shipping Address</h4>
+
+                                                <div class="row">
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>First Name*</label>
+                                                        <input type="text" placeholder="First Name">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Last Name*</label>
+                                                        <input type="text" placeholder="Last Name">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Email Address*</label>
+                                                        <input type="email" placeholder="Email Address">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Phone no*</label>
+                                                        <input type="text" placeholder="Phone number">
+                                                    </div>
+
+                                                    <div class="col-12 mb-20">
+                                                        <label>Company Name</label>
+                                                        <input type="text" placeholder="Company Name">
+                                                    </div>
+
+                                                    <div class="col-12 mb-20">
+                                                        <label>Address*</label>
+                                                        <input type="text" placeholder="Address line 1">
+                                                        <input type="text" placeholder="Address line 2">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Country*</label>
+                                                        <select class="nice-select">
+                                                            <%- include("countries.ejs") %>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Town/City*</label>
+                                                        <input type="text" placeholder="Town/City">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>State*</label>
+                                                        <input type="text" placeholder="State">
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12 mb-20">
+                                                        <label>Zip Code*</label>
+                                                        <input type="text" placeholder="Zip Code">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-5">
+                                            <div class="row">
+
+                                                <!-- Cart Total -->
+                                                <div class="col-12 mb-60">
+
+                                                    <h4 class="checkout-title">Carrinho Total</h4>
+
+                                                    <div class="checkout-cart-total">
+
+                                                        <h4>Produto <span>Total</span></h4>
+
+                                                        <ul>
+                                                            <!-- <li>Teritory Quentily X 01 <span>$35.00</span></li>
+                                                            <li>Adurite Silocone X 02 <span>$59.00</span></li>
+                                                            <li>Baizidale Momone X 01 <span>$78.00</span></li>
+                                                            <li>Makorone Cicile X 01 <span>$65.00</span></li> -->
+                                                        </ul>
+
+                                                        <p>Sub Total <span id="checkout-sub-total">0</span></p>
+                                                        <p>IVA(23%) <span id="shipping-elem">0</span></p>
+
+                                                        <h4>Total geral <span id="checkout-grand-total">0</span></h4>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- Payment Method -->
+                                                <div class="col-12 mb-30">
+                                                    <button class="place-order btn btn-lg btn-round"
+                                                        style="border-radius: 5px">Colocar encomenda</button>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Checkout section end-->
+
+
+                <!--Footer section start-->
+                <%- include('footer.ejs', {category}) %>
+                    <!--Footer section end-->
+    </div>
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+
+    <!-- All jquery file included here -->
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script
+        src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.22&amp;key=AIzaSyDAq7MrCR1A2qIShmjbtLHSKjcEIEBEEwM"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/addToCart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to update cart and totals
+            function updateCheckout() {
+                const cartItemsContainer = document.querySelector(".checkout-cart-total ul");
+                const subtotalElement = document.querySelector("#checkout-sub-total");
+                const shippingElement = document.querySelector("#shipping-elem");
+                const grandTotalElement = document.querySelector("#checkout-grand-total");
+
+                let subtotal = 0;
+
+                // Retrieve cart items from local storage
+                const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                // Clear the current content of the cart items container
+                cartItemsContainer.innerHTML = "";
+
+                // Loop through each item in the cart
+                cart.forEach(item => {
+                    const cartItem = document.createElement("li");
+                    cartItem.innerHTML = `${item.name} X ${item.quantity} <span>$${(item.price * item.quantity).toFixed(2)}</span>`;
+                    cartItemsContainer.appendChild(cartItem);
+
+                    // Update subtotal
+                    subtotal += item.price * item.quantity;
+                });
+
+                // Placeholder for shipping fee (you can update this based on your logic)
+                const vat = subtotal * 0.23;
+
+                // Calculate grand total
+                const grandTotal = subtotal + vat;
+
+                // Update totals
+                shippingElement.textContent = `€${vat.toFixed(2)}`;
+                subtotalElement.textContent = `€${subtotal.toFixed(2)}`;
+                grandTotalElement.textContent = `€${grandTotal.toFixed(2)}`;
+            }
+
+            // Initial update of the checkout
+            updateCheckout();
+        });
+
+    </script>
+
+</body>
+
+</html>

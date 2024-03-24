@@ -1,0 +1,75 @@
+<!doctype html>
+<html class="no-js" lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        <%= pageName %> | <%= title %>
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="/assets/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/iconfont.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/helper.css">
+    <link rel="stylesheet" href="/assets/css/plugins/plugins.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+
+
+        <!-- Page Banner Section Start -->
+        <%- include('breadcrumb') %>
+            <!-- Page Banner Section End -->
+            <!-- 404 Error Section Start -->
+            <div
+                class="404-error-section section pt-90 pt-lg-70 pt-md-60 pt-sm-50 pt-xs-45 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="404-image">
+                                <img src="/assets/images/blog/blog-6.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="error-wrapper text-center">
+                                <div class="error-text">
+                                    <h1>404</h1>
+                                    <h2>PÁGINA NÃO ENCONTRADA</h2>
+                                    <p>
+                                        Lamentamos mas a página que procura não existe, 
+                                        foi removida, o nome foi alterado ou está temporariamente indisponível.</p>
+                                </div>
+                                <div class="error-button">
+                                    <a href="/">Voltar à página inicial</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 404 Error Section End -->
+
+
+    </div>
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+
+    <!-- All jquery file included here -->
+    <script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins/plugins.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>

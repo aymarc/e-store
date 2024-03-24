@@ -1,0 +1,288 @@
+<style>
+    /* For Webkit browsers */
+    .header-cart {
+        height: 400px !important;
+        overflow-y: scroll;
+        /* Ensure the scrollbar only appears when needed */
+        scrollbar-width: thin;
+        /* Firefox */
+        scrollbar-color: #888 #f1f1f1;
+        /* Firefox scrollbar color */
+
+        /* Webkit browsers (Chrome, Safari) */
+        &::-webkit-scrollbar {
+            width: 6px;
+            /* Adjust this value to change the width of the scrollbar */
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #888;
+            /* Color of the scrollbar thumb */
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+            /* Color of the scrollbar track */
+        }
+    }
+</style>
+<header class="header header-transparent header-sticky  d-lg-block d-none">
+    <div class="header-deafult-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-3 col-lg-2 col-md-4 col-12">
+                    <!--Logo Area Start-->
+                    <div class="logo-area">
+                        <a href="/"><img src="/assets/images/logo.png" alt=""></a>
+                    </div>
+                    <!--Logo Area End-->
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-4 d-none d-lg-block col-12">
+                    <!--Header Menu Area Start-->
+                    <div class="header-menu-area text-center">
+                        <nav class="main-menu">
+                            <ul>
+                                <li><a href="/">Início</a></li>
+                                <li><a class="item-link">Categoria</a>
+                                    <ul class="sub-menu">
+                                        <% category.forEach(cat=>{ %>
+                                            <li><a href="/shop?categoryName=<%=cat.name%>">
+                                                    <%= cat.displayName %>
+                                                </a></li>
+                                            <% }) %>
+                                    </ul>
+                                </li>
+                                <li><a href="/about">Sobre nós</a></li>
+                                <li><a href="/contact">contacto</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--Header Menu Area End-->
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-5 col-12">
+                    <!--Header Search And Mini Cart Area Start-->
+                    <div class="header-search-cart-area">
+                        <ul>
+                            <li><a class="header-search-toggle" href="#"><i class="flaticon-magnifying-glass"></i></a>
+                            </li>
+                            <!-- <li class="currency-menu"><a href="#"><i class="flaticon-user"></i></a>
+                            
+                                <ul class="currency-dropdown">
+                                    
+                                    <li><a href="#">language</a>
+                                        <ul>
+                                            <li class="active"><a href="#"><img src="assets/images/icons/en-gb.png"
+                                                        alt="">English</a>
+                                            </li>
+                                            <li><a href="#"><img src="assets/images/icons/de-de.png" alt="">French</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                
+                                    <li><a href="#"></a>
+                                        <ul>
+                                            <li><a href="#"> Log in</a></li>
+                                        </ul>
+                                    </li>
+                                    
+
+                                </ul>
+                                
+                            </li> -->
+                            <li class="mini-cart"><a href=""><i class="flaticon-shopping-cart"></i> <span
+                                        class="mini-cart-total"></span></a>
+                                <!--Mini Cart Dropdown Start-->
+                                <div class="header-cart">
+                                    <ul class="cart-items">
+                                        <!-- <li class="single-cart-item">
+                                            <div class="cart-img">
+                                                <a href="#"><img src="assets/images/cart/cart1.jpg"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="cart-content">
+                                                <h5 class="product-name"><a href="single-product.html">Dell
+                                                        Inspiron 24</a></h5>
+                                                <span class="product-quantity">1 ×</span>
+                                                <span class="product-price">$278.00</span>
+                                            </div>
+                                            <div class="cart-item-remove">
+                                                <a title="Remove" href="#"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                        </li>
+                                        <li class="single-cart-item">
+                                            <div class="cart-img">
+                                                <a href="#"><img src="assets/images/cart/cart2.jpg"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="cart-content">
+                                                <h5 class="product-name"><a href="single-product.html">Lenovo
+                                                        Ideacentre 300</a></h5>
+                                                <span class="product-quantity">1 ×</span>
+                                                <span class="product-price">$23.39</span>
+                                            </div>
+                                            <div class="cart-item-remove">
+                                                <a title="Remove" href="#"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                        </li> -->
+                                    </ul>
+                                    <div class="cart-total">
+                                        <h5>Subtotal: <span class="float-right" id="subtotal">0</span></h5>
+                                        <h5>IVA(23%) : <span class="float-right" id="vat">0</span></h5>
+                                        <h5>Total : <span class="float-right" id="total">0</span></h5>
+                                    </div>
+                                    <div class="cart-btn">
+                                        <a href="/cart">Ver carrinho</a>
+                                        <a href="/checkout">Finalizar</a>
+                                    </div>
+                                </div>
+                                <!--Mini Cart Dropdown End-->
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Header Search And Mini Cart Area End-->
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--Header Mobile section start-->
+<header class="header-mobile d-block d-lg-none">
+    <div class="header-bottom menu-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header-mobile-navigation d-block d-lg-none">
+                        <div class="row align-items-center">
+                            <div class="col-6 col-md-6">
+                                <div class="header-logo">
+                                    <a href="/">
+                                        <img src="/assets/images/logo.png" class="img-fluid" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-6">
+                                <div class="mobile-navigation text-end">
+                                    <div class="header-icon-wrapper">
+                                        <ul class="icon-list justify-content-end">
+                                            <li>
+                                                <div class="header-cart-icon">
+                                                    <a href="/cart"><i class="flaticon-shopping-cart"></i></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" class="mobile-menu-icon"
+                                                    id="mobile-menu-trigger"><i class="fa fa-bars"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Mobile Menu start-->
+            <div class="row">
+                <div class="col-12 d-flex d-lg-none">
+                    <div class="mobile-menu"></div>
+                </div>
+            </div>
+            <!--Mobile Menu end-->
+
+        </div>
+    </div>
+</header>
+<!--Header Mobile section end-->
+
+<div class="offcanvas-mobile-menu d-block d-lg-none" id="offcanvas-mobile-menu">
+    <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
+        <i class="fa fa-times"></i>
+    </a>
+
+    <div class="offcanvas-wrapper">
+
+        <div class="offcanvas-inner-content">
+            <div class="offcanvas-mobile-search-area">
+                <form action="#">
+                    <input type="search" placeholder="Search ...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <nav class="offcanvas-navigation">
+                <ul>
+                    <li class="item-link"><a href="/">Início</a></li>
+                    <li class="menu-item-has-children "><a href="#"> Categoria</a>
+                        <ul class="submenu2">
+                            <% category.forEach(cat=>{ %>
+                                <li><a href="/shop?categoryName=<%=cat.name%>">
+                                        <%= cat.displayName %>
+                                    </a></li>
+                                <% }) %>
+
+                        </ul>
+
+                    </li>
+                    <li class="menu-item-has-children"><a href="/about">Sobre nós</a></li>
+                    <li class="menu-item-has-children"><a href="/contact">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <!-- <div class="offcanvas-settings">
+                <nav class="offcanvas-navigation">
+                    <ul>
+                        <li class="menu-item-has-children"><a href="#">My account </a>
+                            <ul class="submenu2">
+                                <li><a href="">Login</a></li>
+                                <li><a href="/checkout">Checkout</a></li>
+                                <li><a href="/cart">Cart</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item-has-children"><a href="#">LANGUAGE: EN-GB </a>
+                            <ul class="submenu2">
+                                <li><a href="javascript:void(0)"><img src="assets/images/icons/en-gb.png" alt="">
+                                        English</a></li>
+                                <li><a href="javascript:void(0)"><img src="assets/images/icons/de-de.png" alt="">
+                                        Germany</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div> -->
+
+            <div class="offcanvas-widget-area">
+                <div class="off-canvas-contact-widget">
+                    <div class="header-contact-info">
+                        <ul class="header-contact-info-list">
+                            <li><i class="ion-android-phone-portrait"></i> <a href="tel://00351912914740">+351 91 291 47
+                                    40</a></li>
+                            <li><i class="ion-android-mail"></i> <a href="">info@mariofelicianocontentore.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- main-search start -->
+<div class="main-search-active">
+    <div class="sidebar-search-icon">
+        <button class="search-close"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="sidebar-search-input">
+        <form action="#">
+            <div class="form-search">
+                <input id="search" class="input-text" value="" placeholder="" type="search">
+                <button>
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
+        <p class="form-description">Hit enter to search or ESC to close</p>
+    </div>
+</div>
+<!-- main-search start -->

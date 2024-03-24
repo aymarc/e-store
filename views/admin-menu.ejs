@@ -1,0 +1,70 @@
+<% const activeTab1=activate===1; const activeTab2=activate===2; const activeTab3=activate===3; const
+    activeTab4=activate===4; const activeTab5=activate===5; const activeTab6=activate===6;%>
+    <div class="col-md-2 col-12">
+        <div class="myaccount-tab-menu nav" role="tablist">
+            <a href="/admin" class="btn  btn-sm <%= activeTab1 ? 'active bg-dark' : '' %>" id="dashboad-tab" role="tab"
+                aria-controls="dashboad" aria-selected="<%=activeTab1 %>">
+                <i class="fa fa-dashboard"></i>
+                Tableaux De Bord
+            </a>
+            <a href="/admin/product" class="btn btn-sm <%= activeTab2 ? 'active bg-dark' : '' %>" role="button"
+                id="orders-tab" role="tab" aria-controls="orders" aria-selected="<%=activeTab2 %>">
+                <i class="fa fa-cart-arrow-down fa-5x"></i>
+                Articles
+            </a>
+            <a href="/admin/category" id="download-tab" class="btn btn-sm <%= activeTab3 ? 'active bg-dark' : '' %>"
+                role="button" aria-controls="orders" aria-selected="<%=activeTab3 %>">
+                <i class='fa fa-tasks fa-5x'></i>
+                Categories
+            </a>
+            <a href="/admin/section" id="download-tab" class="btn btn-sm <%= activeTab4 ? 'active bg-dark' : '' %>"
+                role="button" aria-controls="orders" aria-selected="<%=activeTab4 %>">
+                <i class='fa fa-newspaper-o fa-5x'></i>
+                Sections
+            </a>
+            <a href="/admin/group" id="download-tab" class="btn btn-sm <%= activeTab6 ? 'active bg-dark' : '' %>"
+                role="button" aria-controls="orders" aria-selected="<%=activeTab6 %>">
+                <i class='fa fa-newspaper-o fa-5x'></i>
+                Groupes
+            </a>
+            <a href="/admin/commande" id="download-tab" class="btn btn-sm <%= activeTab5 ? 'active bg-dark' : '' %>"
+                role="button" aria-controls="orders" aria-selected="<%=activeTab5 %>">
+                <i class='fa fa-book fa-5x'></i>
+                Commandes
+            </a>
+            <a href="" id="logout-button"><i class="fa fa-sign-out"></i> Logout</a>
+        </div>
+    </div>
+
+    <script>
+        const logoutBtn = document.getElementById('logout-button');
+        const logoutApi = `${window.baseUrl}/api/v1/user/logout`;
+        logoutBtn.addEventListener('click', async (e) => {
+            try {
+                e.preventDefault();
+                if (!token) {
+                    window.location.href = "/admin/login";
+                }
+
+                const response = await fetch(logoutApi, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                });
+                console.log("response ", response);
+                if (response.ok) {
+                    const responseData = await response.json();
+                    if (responseData?.success) {
+                        window.localStorage.removeItem("access_token");
+                        window.location.href = "/admin/login";
+                    }
+                } else {
+                    window.location.href = "/admin/login";
+                }
+            } catch (error) {
+                console.log("error ", error)
+            }
+        });
+    </script>

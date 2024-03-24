@@ -1,0 +1,310 @@
+<!doctype html>
+<html class="no-js" lang="pt">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        <%= pageName %> | <%= title %>
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="/assets/images/favicon.png" type="img/x-icon" rel="shortcut icon">
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/iconfont.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/helper.css">
+    <link rel="stylesheet" href="/assets/css/plugins/plugins.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css"> -->
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.7/fc-4.3.0/r-2.5.0/datatables.min.css" rel="stylesheet">
+
+    <!-- Modernizr JS -->
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script>
+        const token = window.localStorage.getItem("access_token");
+        if (!token) {
+            window.location.href = "/admin/login";
+        }
+
+    </script>
+    <style>
+        .image-uploader {
+            max-width: 200px;
+        }
+
+        .image-uploader-sec {
+            max-width: 100%;
+        }
+
+
+        .button_outer {
+            text-align: center;
+            display: inline-block;
+            transition: .2s;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .btn_upload {
+            width: 200px;
+        }
+
+        .btn_upload input {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 105%;
+            cursor: pointer;
+            opacity: 0;
+        }
+
+        .file_uploading {
+            width: 100%;
+            /* background: #ccc; */
+        }
+
+        .file_uploading .btn_upload {
+            display: block;
+        }
+
+
+        /* .processing_bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            border-radius: 30px;
+            transition: 3s;
+        } */
+
+        .file_uploading .processing_bar {
+            width: 100%;
+        }
+
+        .success_box {
+            display: none;
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+
+        .success_box:before {
+            content: '';
+            display: block;
+            width: 9px;
+            height: 18px;
+            border-bottom: 6px solid #fff;
+            border-right: 6px solid #fff;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            position: absolute;
+            left: 17px;
+            top: 10px;
+        }
+
+        .file_uploaded .success_box {
+            display: inline-block;
+        }
+
+        .file_uploaded {
+            margin-top: 0;
+            width: 50px;
+            background: #83ccd3;
+            height: 50px;
+        }
+
+        .uploaded_file_view {
+            max-width: 100%;
+            margin: 5px auto;
+            text-align: center;
+            position: relative;
+            transition: .2s;
+            opacity: 1;
+            border: 2px solid #ddd;
+            padding: 15px;
+            min-height: 100px;
+            display: flex;
+            /* flex-direction: column; */
+            gap: 5px;
+            overflow-x: auto;
+        }
+
+
+
+        .uploaded_file_view::-webkit-scrollbar {
+            width: 8px;
+            /* Adjust the width of the scrollbar */
+        }
+
+        .uploaded_file_view::-webkit-scrollbar-thumb {
+            background: #888;
+            /* Change the color of the scrollbar thumb */
+            border-radius: 4px;
+            /* Adjust the border radius to make it rounder */
+        }
+
+        .uploaded_file_view::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            /* Change the color of the scrollbar track */
+        }
+
+        /* For Firefox */
+        .uploaded_file_view {
+            scrollbar-width: thin;
+            /* Adjust the width of the scrollbar */
+        }
+
+        .uploaded_file_view::-webkit-scrollbar-thumb {
+            background: #888;
+            /* Change the color of the scrollbar thumb */
+            border-radius: 4px;
+            /* Adjust the border radius to make it rounder */
+        }
+
+        .uploaded_file_view::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            /* Change the color of the scrollbar track */
+        }
+
+        .uploaded_file_view.single-view {
+            overflow-x: hidden;
+        }
+
+        .file_remove {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: block;
+            position: absolute;
+            background: #aaa;
+            line-height: 30px;
+            color: #fff;
+            font-size: 12px;
+            cursor: pointer;
+            right: -15px;
+            top: -15px;
+        }
+
+        .file_remove:hover {
+            background: #222;
+            transition: .2s;
+        }
+
+        .uploaded_file_view img {
+
+            max-width: 200px;
+        }
+
+        .uploaded_file_view.show {
+            opacity: 1;
+        }
+
+        .error_msg {
+            text-align: center;
+            color: #f00
+        }
+
+        #container-dt td {
+            max-width: 400px;
+            /* Set the maximum width for the columns you want */
+            white-space: nowrap;
+            /* Prevent text from wrapping */
+            overflow: hidden;
+            /* Hide overflow content */
+            text-overflow: ellipsis;
+            /* Display ellipsis for overflow content */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+        <!--Header section start-->
+        <%- include('header.ejs', {category}) %>
+            <!--Header section end-->
+
+
+            <!-- Page Banner Section Start -->
+            <!-- <%- include('breadcrumb') %> -->
+            <!-- Page Banner Section End -->
+
+            <!--My Account section start-->
+            <div
+                class="my-account-section section pt-90 pt-lg-70 pt-md-60 pt-sm-50 pt-xs-45  pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="row">
+                                <!-- My Account Tab Menu Start -->
+                                <%- include('admin-menu.ejs') %>
+                                    <!-- My Account Tab Menu End -->
+
+                                    <!-- My Account Tab Content Start -->
+                                    <div class="col-lg-9 col-12">
+                                        <div class="tab-content" id="myaccountContent">
+                                            <!-- Single Tab Content Start -->
+                                            <div class="tab-pane fade show active" id="dashboad" role="tabpanel"
+                                                aria-labelledby="dashboad-tab" tabindex="0">
+                                                <div class="myaccount-content">
+                                                    <h3>Dashboard</h3>
+
+                                                    <div class="welcome mb-20">
+                                                        <p>Hello, <strong>Admin!</strong>
+                                                            Welcome back
+                                                        </p>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <!-- Single Tab Content End -->
+                                        </div>
+                                    </div>
+                                    <!-- My Account Tab Content End -->
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--My Account section end-->
+
+            <!--Footer section start-->
+
+
+
+            <!--Footer section end-->
+
+    </div>
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+
+    <!-- All jquery file included here -->
+    <script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+
+    <script src="/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins/plugins.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.7/fc-4.3.0/r-2.5.0/datatables.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+</body>
+
+
+</html>

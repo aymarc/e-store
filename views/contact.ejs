@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="pt">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        <%= pageName %> | <%= title %>
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="/assets/images/favicon.png" type="img/x-icon" rel="shortcut icon">
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/iconfont.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/helper.css">
+    <link rel="stylesheet" href="/assets/css/plugins/plugins.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+        <!--Header section start-->
+        <%- include('header.ejs', {category}) %>
+            <!--Header section end-->
+
+
+            <!-- Page Banner Section Start -->
+            <%- include('breadcrumb') %>
+                <!-- Page Banner Section End -->
+
+
+                <!--Contact section start-->
+                <div
+                    class="conact-section section pt-85 pt-lg-65 pt-md-55 pt-sm-45 pt-xs-35  pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="contact-form-wrap">
+                                    <h3 class="contact-title">Escreva-nos</h3>
+                                    <form id="contact-form" action="#" method="post">
+                                        <div class="row">
+                                            <div class="col-lg-5">
+                                                <div class="name-fild-padding mb-sm-30 mb-xs-30">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="contact-form-style mb-20">
+                                                                <label class="fild-name">Nome</label>
+                                                                <input name="name" placeholder="" type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="contact-form-style mb-20">
+                                                                <label class="fild-name">Correio eletrónico</label>
+                                                                <input name="email" placeholder="" type="email">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="check-box">
+                                                                <input type="checkbox" id="create_account">
+                                                                <label for="create_account">Eu não sou um robot</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <div class="contact-form-style bl">
+                                                    <label class="fild-name pl-15">Mensagem</label>
+                                                    <textarea class="pl-15" name="message"
+                                                        placeholder="Escreva aqui a sua mensagem.."></textarea>
+                                                    <button class="btn" type="submit"><span>Send message</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <p class="form-messege"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Contact section end-->
+                <!--Contact Map section start-->
+                <div class="contact-map-section section">
+                    <div id="contact-map" class="contact-map">
+
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.363334123236!2d-7.9367209887319605!3d37.02498235488063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0552c90d918a0f%3A0x8fa2f85ec8ad30a8!2sR.%20do%20Alto%20de%20Rodes%2C%20Faro%2C%20Portugal!5e0!3m2!1sfr!2sin!4v1700785807940!5m2!1sfr!2sin"
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <!--Contact Map section End-->
+
+                <!--Footer section start-->
+                <%- include('footer.ejs', {category}) %>
+                    <!--Footer section end-->
+
+    </div>
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+
+    <!-- All jquery file included here -->
+    <script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+
+    <script src="/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins/plugins.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/addToCart.js"></script>
+</body>
+
+
+
+</html>

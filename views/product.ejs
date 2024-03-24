@@ -1,0 +1,309 @@
+<!doctype html>
+<html class="no-js" lang="pt">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        <%= pageName %> | <%= title %>
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="/assets/images/favicon.png" type="img/x-icon" rel="shortcut icon">
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/iconfont.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/helper.css">
+    <link rel="stylesheet" href="/assets/css/plugins/plugins.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+        <!--Header section start-->
+        <%- include('header.ejs', {category}) %>
+            <!--Header section end-->
+
+
+            <!-- Page Banner Section Start -->
+            <%- include('breadcrumb') %>
+                <!-- Page Banner Section End -->
+                <!-- Single Product Section Start -->
+                <div
+                    class="single-product-section section pt-60 pt-lg-40 pt-md-30 pt-sm-20 pt-xs-25 pb-100 pb-lg-80 pb-md-70 pb-sm-30 pb-xs-20">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="shop-area">
+                                    <div class="row">
+                                        <div class="col-md-6 pr-35 pr-lg-15 pr-md-15 pr-sm-15 pr-xs-15">
+                                            <!-- Product Details Left -->
+                                            <div class="product-details-left">
+                                                <div class="product-details-images">
+                                                    <div class="lg-image">
+                                                        <img src="<%= product.imageMain %>" alt="">
+                                                        <a href="<%= product.imageMain %>" class="popup-img venobox"
+                                                            data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                                    </div>
+                                                    <div class="lg-image">
+                                                        <img src="<%= product.imageSecondary1 %>" alt="">
+                                                        <a href="<%= product.imageSecondary1 %>"
+                                                            class="popup-img venobox" data-gall="myGallery"><i
+                                                                class="fa fa-expand"></i></a>
+                                                    </div>
+                                                    <div class="lg-image">
+                                                        <img src="<%= product.imageSecondary2 %>" alt="">
+                                                        <a href="<%= product.imageSecondary2 %>"
+                                                            class="popup-img venobox" data-gall="myGallery"><i
+                                                                class="fa fa-expand"></i></a>
+                                                    </div>
+                                                    <div class="lg-image">
+                                                        <img src="<%= product.imageSecondary3 %>" alt="">
+                                                        <a href="<%= product.imageSecondary3 %>"
+                                                            class="popup-img venobox" data-gall="myGallery"><i
+                                                                class="fa fa-expand"></i></a>
+                                                    </div>
+                                                    <div class="lg-image">
+                                                        <img src="<%= product.imageSecondary4 %>" alt="">
+                                                        <a href="<%= product.imageSecondary4 %>"
+                                                            class="popup-img venobox" data-gall="myGallery"><i
+                                                                class="fa fa-expand"></i></a>
+                                                    </div>
+                                                    <div class="lg-image">
+                                                        <img src="<%= product.imageSecondary5 %>" alt="">
+                                                        <a href="<%= product.imageSecondary5 %>"
+                                                            class="popup-img venobox" data-gall="myGallery"><i
+                                                                class="fa fa-expand"></i></a>
+                                                    </div>
+                                                    <div class="lg-image">
+                                                        <img src="<%= product.imageSecondary6 %>" alt="">
+                                                        <a href="<%= product.imageSecondary6 %>"
+                                                            class="popup-img venobox" data-gall="myGallery"><i
+                                                                class="fa fa-expand"></i></a>
+                                                    </div>
+
+                                                </div>
+                                                <div class="product-details-thumbs">
+                                                    <div class="sm-image"><img src="<%= product.imageMain %>"
+                                                            alt="product image thumb"></div>
+                                                    <div class="sm-image"><img src="<%= product.imageSecondary1 %>"
+                                                            alt="product image thumb"></div>
+                                                    <div class="sm-image"><img src="<%= product.imageSecondary2 %>"
+                                                            alt="product image thumb"></div>
+                                                    <div class="sm-image"><img src="<%= product.imageSecondary3 %>"
+                                                            alt="product image thumb"></div>
+                                                    <div class="sm-image"><img src="<%= product.imageSecondary4 %>"
+                                                            alt="product image thumb"></div>
+                                                    <div class="sm-image"><img src="<%= product.imageSecondary5 %>"
+                                                            alt="product image thumb"></div>
+                                                    <div class="sm-image"><img src="<%= product.imageSecondary6 %>"
+                                                            alt="product image thumb"></div>
+                                                    <div class="sm-image"><img src="<%= product.imageSecondary7 %>"
+                                                            alt="product image thumb"></div>
+                                                </div>
+                                            </div>
+                                            <!--Product Details Left -->
+                                        </div>
+                                        <div class="col-md-6">
+                                            <!--Product Details Content Start-->
+                                            <div class="product-details-content">
+                                                <!--Product Nav Start-->
+
+                                                <!--Product Nav End-->
+                                                <h2>
+                                                    <%= product.label %>
+                                                </h2>
+                                                <div class="single-product-reviews">
+                                                    <i class="fa fa-star active"></i>
+                                                    <i class="fa fa-star active"></i>
+                                                    <i class="fa fa-star active"></i>
+                                                    <i class="fa fa-star active"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <!-- <a class="review-link" href="#">(1 customer review)</a> -->
+                                                </div>
+                                                <div class="single-product-price">
+                                                    <span class="price new-price">
+                                                        <%= product.price %> &euro;
+                                                    </span>
+
+                                                </div>
+                                                <div class="product-description">
+                                                    <p>
+                                                        <%= product.shortDescription %>
+                                                    </p>
+                                                </div>
+                                                <!-- <div class="product-countdown-two" data-countdown2="2023/12/01"></div> -->
+                                                <div class="single-product-quantity">
+                                                    <form class="add-quantity" action="#">
+                                                        <!-- <div class="product-quantity">
+                                                            <input value="1" type="number">
+                                                        </div> -->
+                                                        <div class="">
+                                                            <a class="add-to-cart-btn"
+                                                                data-image="<%= product.imageMain %>"
+                                                                data-id="<%= product.id %>"
+                                                                data-name="<%= product.label %>"
+                                                                data-price="<%= product.price %>">
+                                                                <button class="btn btn-sm" type="button"
+                                                                    style="border-radius:1px"><i
+                                                                        class="fa fa-shopping-bag"></i>
+                                                                    Add to cart
+                                                                </button>
+                                                            </a>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                            <!--Product Details Content End-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product Section End -->
+
+                <!--Product Description Review Section Start-->
+                <div class="product-description-review-section section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="product-review-tab section">
+
+                                    <ul class="nav dec-and-review-menu">
+                                        <li>
+                                            <a class="active" data-bs-toggle="tab" href="#description">Description</a>
+                                        </li>
+                                        <!-- <li>
+                                        <a data-bs-toggle="tab" href="#reviews">Reviews (1)</a>
+                                        </li> -->
+                                    </ul>
+
+                                    <div class="tab-content product-review-content-tab" id="myTabContent-4">
+                                        <div class="tab-pane fade active show" id="description">
+                                            <div class="single-product-description">
+                                                <p>
+                                                    <%= product.shortDescription %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="reviews">
+                                            <div class="review-page-comment">
+                                                <h2>1 review for Sit voluptatem</h2>
+                                                <ul>
+                                                    <li>
+                                                        <div class="product-comment">
+                                                            <img src="/assets/images/icons/author.png" alt="">
+                                                            <div class="product-comment-content">
+                                                                <div class="product-reviews">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </div>
+                                                                <p class="meta">
+                                                                    <strong>admin</strong> - <span>November 22,
+                                                                        2018</span>
+                                                                <div class="description">
+                                                                    <p>Good Product</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <div class="review-form-wrapper">
+                                                    <div class="review-form">
+                                                        <span class="comment-reply-title">Add a review </span>
+                                                        <form action="#">
+                                                            <p class="comment-notes">
+                                                                <span id="email-notes">Your email address will not be
+                                                                    published.</span>
+                                                                Required fields are marked
+                                                                <span class="required">*</span>
+                                                            </p>
+                                                            <div class="comment-form-rating">
+                                                                <label>Your rating</label>
+                                                                <div class="rating">
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="input-element">
+                                                                <div class="comment-form-comment">
+                                                                    <label>Comment</label>
+                                                                    <textarea name="message" cols="40"
+                                                                        rows="8"></textarea>
+                                                                </div>
+                                                                <div class="review-comment-form-author">
+                                                                    <label>Name </label>
+                                                                    <input required="required" type="text">
+                                                                </div>
+                                                                <div class="review-comment-form-email">
+                                                                    <label>Email </label>
+                                                                    <input required="required" type="text">
+                                                                </div>
+                                                                <div class="comment-submit">
+                                                                    <button type="submit"
+                                                                        class="form-button">Submit</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Product Description Review Section Start-->
+
+                <!--Product section start-->
+                <!-- <div
+                    class="product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-60 pb-lg-40 pb-md-30 pb-sm-20 pb-xs-15">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="section-title text-center mb-50 mb-xs-20">
+                                    <h2>Related Products</h2>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div> -->
+
+                <%- include('footer.ejs', {category}) %>
+    </div>
+
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+
+    <!-- All jquery file included here -->
+    <script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins/plugins.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/addToCart.js"></script>
+</body>
+
+
+</html>

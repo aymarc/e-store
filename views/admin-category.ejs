@@ -1,0 +1,554 @@
+<!doctype html>
+<html class="no-js" lang="pt">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        <%= pageName %> | <%= title %>
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="/assets/images/favicon.png" type="img/x-icon" rel="shortcut icon">
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/iconfont.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/helper.css">
+    <link rel="stylesheet" href="/assets/css/plugins/plugins.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css"> -->
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.7/fc-4.3.0/r-2.5.0/datatables.min.css" rel="stylesheet">
+
+    <!-- Modernizr JS -->
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script>
+        const token = window.localStorage.getItem("access_token");
+        if (!token) {
+            window.location.href = "/admin/login";
+        }
+
+    </script>
+    <style>
+        .image-uploader {
+            max-width: 200px;
+        }
+
+
+        .button_outer {
+            text-align: center;
+            display: inline-block;
+            transition: .2s;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .btn_upload {
+            width: 200px;
+        }
+
+        .save-btn {
+            width: 100%;
+        }
+
+        .btn_upload input {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 105%;
+            cursor: pointer;
+            opacity: 0;
+        }
+
+        .file_uploading {
+            width: 100%;
+            /* background: #ccc; */
+        }
+
+        .file_uploading .btn_upload {
+            display: block;
+        }
+
+
+        /* .processing_bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            border-radius: 30px;
+            transition: 3s;
+        } */
+
+        .file_uploading .processing_bar {
+            width: 100%;
+        }
+
+        .success_box {
+            display: none;
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+
+        .success_box:before {
+            content: '';
+            display: block;
+            width: 9px;
+            height: 18px;
+            border-bottom: 6px solid #fff;
+            border-right: 6px solid #fff;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            position: absolute;
+            left: 17px;
+            top: 10px;
+        }
+
+        .file_uploaded .success_box {
+            display: inline-block;
+        }
+
+        .file_uploaded {
+            margin-top: 0;
+            width: 50px;
+            background: #83ccd3;
+            height: 50px;
+        }
+
+        .uploaded_file_view {
+            max-width: 100%;
+            margin: 5px auto;
+            text-align: center;
+            position: relative;
+            transition: .2s;
+            opacity: 1;
+            border: 2px solid #ddd;
+            padding: 15px;
+            min-height: 100px;
+            display: flex;
+            /* flex-direction: column; */
+            gap: 5px;
+            overflow-x: auto;
+        }
+
+
+
+        .uploaded_file_view::-webkit-scrollbar {
+            width: 8px;
+            /* Adjust the width of the scrollbar */
+        }
+
+        .uploaded_file_view::-webkit-scrollbar-thumb {
+            background: #888;
+            /* Change the color of the scrollbar thumb */
+            border-radius: 4px;
+            /* Adjust the border radius to make it rounder */
+        }
+
+        .uploaded_file_view::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            /* Change the color of the scrollbar track */
+        }
+
+        /* For Firefox */
+        .uploaded_file_view {
+            scrollbar-width: thin;
+            /* Adjust the width of the scrollbar */
+        }
+
+        .uploaded_file_view::-webkit-scrollbar-thumb {
+            background: #888;
+            /* Change the color of the scrollbar thumb */
+            border-radius: 4px;
+            /* Adjust the border radius to make it rounder */
+        }
+
+        .uploaded_file_view::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            /* Change the color of the scrollbar track */
+        }
+
+        .uploaded_file_view.single-view {
+            overflow-x: hidden;
+        }
+
+        .file_remove {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: block;
+            position: absolute;
+            background: #aaa;
+            line-height: 30px;
+            color: #fff;
+            font-size: 12px;
+            cursor: pointer;
+            right: -15px;
+            top: -15px;
+        }
+
+        .file_remove:hover {
+            background: #222;
+            transition: .2s;
+        }
+
+        .uploaded_file_view img {
+
+            max-width: 200px;
+        }
+
+        .uploaded_file_view.show {
+            opacity: 1;
+        }
+
+        .error_msg {
+            text-align: center;
+            color: #f00
+        }
+
+        #container-dt {
+            width: 100% !important;
+        }
+
+        #container-dt td {
+            max-width: 400px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: left;
+            text-overflow: ellipsis;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+        <!--Header section start-->
+        <%- include('header.ejs', {category}) %>
+            <!--Header section end-->
+
+            <!--My Account section start-->
+            <div
+                class="my-account-section section pt-90 pt-lg-70 pt-md-60 pt-sm-50 pt-xs-45  pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="row">
+                                <!-- My Account Tab Menu Start -->
+                                <%- include('admin-menu.ejs') %>
+                                    <!-- My Account Tab Menu End -->
+
+                                    <!-- My Account Tab Content Start -->
+                                    <div class="col-md-10 col-12 mb-5">
+                                        <div class="tab-content mb-5" id="myaccountContent">
+
+                                            <!-- Single Tab Content Start -->
+                                            <div class="tab-pane fade show active" id="orders" role="tabpanel"
+                                                aria-labelledby="orders-tab" tabindex="0">
+                                                <div class="myaccount-content">
+                                                    <p><i class="fa fa-file-text" aria-hidden="true"></i>
+                                                        Formulaire de Category
+                                                        <button class="ml-5  btn btn-info btn-sm" id="create-form"
+                                                            class="ml-5"><i class="fa fa-plus" aria-hidden="true">
+                                                                Creer</i>
+                                                        </button>
+                                                        <button id="clean-form" style="display:none"
+                                                            class="ml-5 btn-outline-danger btn btn-sm"><i
+                                                                class="fa fa-refresh" aria-hidden="true"> Effacer</i>
+                                                        </button>
+                                                    </p>
+                                                    <hr
+                                                        style="margin:20px 0px 50px 0px; height:2px;border-width:0;color:rgb(0, 0, 0);background-color:rgb(0, 0, 0)">
+                                                    <form class"" style="display:none" id="container-form">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-12 mb-30 d-flex flex-column">
+                                                                <label>Nom de categorie <span
+                                                                        style="color:red">*</span></label>
+                                                                <input id="name" name="name" type="text" required>
+                                                            </div>
+
+                                                            <div class="col-lg-6 mb-30 d-flex flex-column">
+                                                                <label>Nom qui s'affiche sur le site<span
+                                                                        style="color:red">*</span></label>
+                                                                <input id="displayName" name="displayName" type="text"
+                                                                    required>
+                                                            </div>
+
+                                                            <div class="col-12 mb-30">
+                                                            </div>
+
+                                                            <div class="col-6">
+                                                                <button id="save-form" type="button" data-otheraction=""
+                                                                    class="save-btn btn-info btn btn-sm">Sauvegarder</button>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <button id="cancel-form"
+                                                                    class="save-btn btn-outline-danger btn btn-sm">Annuler</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </form>
+                                                    <p style="margin-top:120px"><i class="fa fa-list"
+                                                            aria-hidden="true"></i>
+                                                        Liste de categories
+                                                    </p>
+                                                    <hr
+                                                        style="margin:20px 0px 50px 0px; height:2px;border-width:0;color:rgb(0, 0, 0);background-color:rgb(0, 0, 0)">
+                                                    <div class="myaccount-table table-responsive text-center mt-30">
+                                                        <table id="container-dt"
+                                                            class="table table-striped table-bordered hover">
+                                                            <thead>
+
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Nom</th>
+                                                                    <th>Nom qui s'affiche</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+
+                                                            </tbody>
+                                                            <tfoot>
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Nom</th>
+                                                                    <th>Nom qui s'affiche</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Single Tab Content End -->
+
+                                        </div>
+                                    </div>
+                                    <!-- My Account Tab Content End -->
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--My Account section end-->
+
+
+    </div>
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+
+    <!-- All jquery file included here -->
+    <script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+
+    <script src="/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins/plugins.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.7/fc-4.3.0/r-2.5.0/datatables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+
+        const productAPI = `${window.baseUrl}/api/v1/category`;
+        new DataTable('#container-dt', {
+            ajax: `${productAPI}?includeAll=1&token=Bearer ${token}`,
+            columnDefs: [
+                {
+                    "data": null, width: "5%", targets: [0], "render": function (data, type, row, meta) {
+                        return `<span>${Number(meta.row) + 1}</span>`;
+                    }
+                },
+                {
+                    "data": "name", width: "40%", targets: [1],
+                },
+                {
+                    "data": "displayName", width: "40%", targets: [2],
+                },
+                {
+                    "data": "id",
+                    "render": function (data, type, row, meta) {
+
+                        return `  <button type="button" data-identity="${data}" class="btn btn-info btn-sm action-delete" onclick="handleButtonClick(this, 'Modifier')">
+            <i class="fa fa-pencil" aria-hidden="true"></i> Modifier
+        </button>
+        ${!row.active ? `<button data-identity="${data}" type="button" class="btn btn-success btn-sm action-delete" onclick="handleButtonClick(this,'Activer')">
+            <i class="fa fa-check" aria-hidden="true"></i> Activer
+        </button>`
+                                : `<button data-identity="${data}" type="button" class="btn btn-warning btn-sm action-delete" onclick="handleButtonClick(this, 'Desactiver')">
+            <i class="fa fa-ban" aria-hidden="true"></i> Desactiver
+        </button>`}
+
+        <button data-identity="${data}" type="button" class="btn btn-danger btn-sm action-delete" onclick="handleButtonClick(this, 'Suprimer')">
+            <i class="fa fa-trash" aria-hidden="true"></i> Suprimer
+        </button>`;
+                    },
+                    targets: [3]
+                }
+            ],
+            fixedColumns: {
+                right: 1
+            },
+        });
+
+
+        function jsonToFormData(jsonObject) {
+            const formData = new FormData();
+            for (const [key, value] of Object.entries(jsonObject)) {
+                formData.append(key, value);
+            }
+            return formData;
+        }
+        // Function to populate the form fields with the retrieved data
+        function populateForm(data) {
+            //console.log("within", data);
+            $("#name").val(data.name);
+            $("#displayName").val(data.displayName);
+            // Repeat for other secondary images...
+            $("#container-form").append(`<input type="hidden" value=${Number(data.id)} id="id" name="id">`);
+            $("#save-form").attr("data-otheraction", "update");
+            // Show the form after populating the data
+            $("#container-form").show();
+            const offset = 100; //Offset of 20px
+            $('html, body').animate({
+                scrollTop: $("#container-form").offset().top - offset
+            }, 2000);
+        }
+
+        function handleButtonClick(button, buttonType) {
+            const loading = Swal.fire({
+                title: 'Processing...',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+            var dataIdentity = button.getAttribute('data-identity');
+            let warningMsg = "",
+                isJson = false,
+                jsonObj = {},
+                successMsg = "Effectuer avec success",
+                requestUrl = `${productAPI}?token=Bearer ${token}`,
+                reqMethod = "POST",
+                payloadType = "application/json",
+                reqPayload;
+            // console.log("requestUrl ", requestUrl)
+            // Perform actions based on the button type and dataIdentity
+            const requestObj = {}
+            if (buttonType === 'Modifier') {
+                reqMethod = "GET";
+                // jsonObj = 
+                // isJson = true;
+                $.ajax({
+                    type: reqMethod,
+                    url: `${requestUrl}&id=${dataIdentity}`,
+                    data: null,
+                    contentType: false,
+                    success: function (response) {
+                        // Close the loader
+                        loading.close();
+                        // Handle the success response here
+                        // console.log("response ", response);
+                        populateForm(response.data[0])
+                    },
+                    error: function (xhr, status, error) {
+                        // Close the loader
+                        loading.close();
+                        // Handle the error response here
+                        console.error("Form submission failed!");
+                        Swal.fire({
+                            icon: 'error',
+                            title: '',
+                            text: error,
+                        })
+                        console.error(error);
+                    }
+                });
+
+                return;
+            } else if (buttonType === 'Desactiver' || buttonType === 'Activer') {
+                warningMsg = `Vous etes sur de vouloir ${buttonType === 'Activer' ? 'activer' : 'desactiver'} cette donnee.`;
+                reqMethod = "PATCH";
+                jsonObj = JSON.stringify({ "id": dataIdentity, "active": `${buttonType === 'Activer' ? 1 : 0}` });
+                isJson = true;
+            } else if (buttonType === 'Suprimer') {
+                warningMsg = "Vous etes sur de vouloir suprimer cette donnee?";
+                reqMethod = "DELETE";
+                jsonObj = JSON.stringify({ "id": dataIdentity });
+                isJson = true;
+            }
+
+            Swal.fire({
+                icon: 'warning',
+                title: warningMsg,
+                showCancelButton: true,
+                confirmButtonText: 'Oui je suis sur',
+                cancelButtonText: "Annuler"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: reqMethod,
+                        url: requestUrl,
+                        data: isJson ? jsonObj : null,
+                        contentType: payloadType,
+                        success: function (response) {
+                            // Close the loader
+                            loading.close();
+                            // Handle the success response here
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: successMsg,
+                                confirmButtonText: 'OK',
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                    console.log(response);
+                                }
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            // Close the loader
+                            loading.close();
+
+                            // Handle the error response here
+                            console.error("Form submission failed!");
+                            Swal.fire({
+                                icon: 'error',
+                                title: '',
+                                text: error,
+                            })
+                            console.error(error);
+                        }
+                    });
+                }
+
+            });
+        }
+
+    </script>
+
+
+    <script src="/assets/js/common_function.js" id="custom-id" data-createform="create-form" data-payloadtype="json"
+        data-cancelForm="cancel-form" data-cleanForm="clean-form" data-pageForm="container-form"
+        data-apiurl="/api/v1/category" data-submitbutton="save-form"></script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,416 @@
+<!doctype html>
+<html class="no-js" lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        <%= pageName %> | <%= title %>
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="/assets/images/favicon.png" type="img/x-icon" rel="shortcut icon">
+    <!-- All css files are included here. -->
+    <!-- <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/vendor/iconfont.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/helper.css">
+    <link rel="stylesheet" href="/assets/css/plugins/plugins.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <!-- Custom CSS and JavaScript for tab color -->
+    <style>
+        /* Custom CSS for scrolling tabs */
+        /* .scrolling-tabs {
+           
+        } */
+
+        .nav-pills {
+            white-space: nowrap;
+        }
+
+        .nav-pills .nav-item {
+            display: inline-block;
+        }
+
+
+        .product-tab ul {
+            display: flex !important;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            overflow-x: auto;
+            background-color: transparent;
+            width: 100% !important;
+            position: relative;
+            left: 10px;
+        }
+
+        .product-tab ul::-webkit-scrollbar {
+            display: none !important;
+        }
+
+        .product-tab ul {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .product-tab li a {
+            text-decoration: none;
+            color: #333;
+            background-color: transparent !important;
+        }
+
+
+
+        @media only screen and (max-width: 767px) {
+            .product-tab li {
+                white-space: nowrap;
+                width: 300px;
+                background-color: transparent !important;
+
+            }
+
+            .product-tab li a {
+                position: relative;
+                top: -20px !important;
+                left: 170px;
+                height: 40px;
+            }
+
+
+
+        }
+
+        .product-tab li a.active {
+            color: red !important;
+            background-color: transparent !important;
+            border-radius: 5px;
+        }
+
+        .product-price {
+            color: red !important;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+        <!--Header section start-->
+        <%- include('header.ejs', {category}) %>
+            <!--Header section end-->
+
+            <!--slider section start-->
+            <div class="hero-section section position-relative">
+                <div class="hero-slider section">
+
+                    <!--Hero Item start-->
+                    <div class="hero-item  bg-image" data-bg="/assets/images/hero/hero-1.jpg">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <!--Hero Content start-->
+                                    <div class="hero-content-2 center">
+
+                                        <h2>Venda & Transporte de contentores</h2>
+                                        <a href="/shop" class="btn">COMPRAR AGORA</a>
+
+                                    </div>
+                                    <!--Hero Content end-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Hero Item end-->
+
+                    <!--Hero Item start-->
+                    <div class="hero-item bg-image" data-bg="/assets/images/hero/hero-2.jpg">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <!--Hero Content start-->
+                                    <div class="hero-content-2 center">
+
+                                        <h2>Venda & Transporte de contentores</h2>
+                                        <a href="/shop" class="btn">COMPRAR AGORA</a>
+
+                                    </div>
+                                    <!--Hero Content end-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Hero Item end-->
+
+                    <!--Hero Item start-->
+                    <div class="hero-item bg-image" data-bg="/assets/images/hero/hero-3.jpg">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <!--Hero Content start-->
+                                    <div class="hero-content-2 center">
+
+                                        <h2>Venda & Transporte de contentores</h2>
+                                        <a href="/shop" class="btn">COMPRAR AGORA</a>
+
+                                    </div>
+                                    <!--Hero Content end-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Hero Item end-->
+
+                </div>
+            </div>
+            <!--slider section end-->
+
+            <!-- Banner section start -->
+
+            <div class="banner-section section pt-30">
+                <div class="container">
+                    <div class="row">
+                        <% products.forEach(group=> {
+                            if(group.name === "Premium"){
+                            group.sections[0].products.forEach((product, key) => {
+                            if(key === 2){return} %>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <!-- Single Banner Start -->
+                                <div class="single-banner-item mb-30">
+                                    <div class="banner-image">
+                                        <a href="">
+                                            <img src="<%=product.imageMain%>" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="banner-content">
+                                        <h3 class="title">
+                                            <%=product.label%>
+                                        </h3>
+                                        <a href="/product?id=<%=product.id%>">COMPRAR AGORA</a>
+                                    </div>
+                                </div>
+                                <!-- Single Banner End -->
+                            </div>
+                            <% })}}) %>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Banner section End -->
+
+            <!-- Product section start -->
+            <% products.forEach(group=> {
+                if(group.name === "Premium"){return}%>
+                <div
+                    class="product-section section pt-70 pt-lg-50 pt-md-40 pt-sm-30 pt-xs-20 pb-55 pb-lg-35 pb-md-25 pb-sm-15 pb-xs-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="section-title text-center mb-15">
+                                    <h2>
+                                        <%=group.name%>
+                                    </h2>
+                                </div>
+                                <div class="product-tab mb-50 mb-sm-30 mb-xs-20">
+                                    <div class="scrolling-tabs">
+                                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                            <% group.sections.forEach((section, key)=> { %>
+                                                <li class="nav-item" role="presentation">
+                                                    <a class="nav-link <%= key === 0 ? 'active' : '' %> d-sm-flex"
+                                                        id="pills-<%= section.id %>-tab" data-mdb-toggle="pill"
+                                                        href="#pills-<%= section.id %>" role="tab"
+                                                        aria-controls="pills-<%= section.id %>" aria-selected="true">
+                                                        <%= section.displayName %>
+                                                    </a>
+                                                </li>
+                                                <% }) %>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="tab-content">
+                            <% group.sections.forEach((section, key)=> { %>
+                                <div class="tab-pane fade <%= key === 0 ? 'show active' : '' %>"
+                                    id="pills-<%= section.id %>" role="tabpanel"
+                                    aria-labelledby="pills-<%= section.id %>-tab">
+                                    <div class="row">
+                                        <% section.products.forEach((product, key)=> { %>
+                                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                                <div class="single-grid-product mb-40">
+                                                    <div class="product-image">
+                                                        <a href="/product?id=<%=product.id%>">
+                                                            <img src="<%=product.imageMain%>" class="img-fluid" alt="">
+                                                        </a>
+                                                        <div class="product-action">
+                                                            <ul>
+                                                                <!-- Add data attributes to the Add to Cart button -->
+                                                                <li><a class="add-to-cart-btn"
+                                                                        data-image="<%= product.imageMain %>"
+                                                                        data-id="<%= product.id %>"
+                                                                        data-name="<%= product.label %>"
+                                                                        data-price="<%= product.price %>">
+                                                                        <i class="fa fa-cart-plus"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <h3 class="title"><a href="#"></a></h3>
+                                                        <p class="product-price">
+                                                            <span class="discounted-price"></span>
+                                                            <%= product.price %> &euro;
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                                <% }) %>
+                        </div>
+
+                    </div>
+                </div>
+                <% }) %>
+                    <!-- Product section end -->
+
+
+                    <!--Features section start-->
+                    <div class="features-section section pt-30 pt-lg-15 pt-md-0 pt-sm-0 pt-xs-15 ">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-4 col-md-6">
+                                    <!-- Single Feature Start -->
+                                    <div class="single-feature mb-30">
+
+                                    </div>
+                                    <!-- Single Feature End -->
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <!-- Single Feature Start -->
+                                    <div class="single-feature mb-30">
+
+                                    </div>
+                                    <!-- Single Feature End -->
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <!-- Single Feature Start -->
+                                    <div class="single-feature mb-30">
+
+                                    </div>
+                                    <!-- Single Feature End -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--Features section end-->
+
+                    <!--Features section start-->
+                    <div class="features-section section bg-gray-two pt-30  pt-xs-30 pb-15  pb-xs-30">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-4 col-md-6">
+                                    <!-- Single Feature Start -->
+                                    <div class="single-feature mb-30">
+                                        <div class="feature-image">
+                                            <img src="/assets/images/icons/feature-1.png" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4 class="title">Entrega gratuita ao domicílio</h4>
+                                            <p class="short-desc">Fornecer entrega gratuita ao domicílio para todos os
+                                                produtos
+                                                de valor superior a &euro; 5000
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- Single Feature End -->
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <!-- Single Feature Start -->
+                                    <div class="single-feature mb-30">
+                                        <div class="feature-image">
+                                            <img src="/assets/images/icons/feature-2.png" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4 class="title">Produtos de qualidade</h4>
+                                            <p class="short-desc">Garantimos a qualidade do produto, que é o nosso
+                                                principal
+                                                objetivo</p>
+                                        </div>
+                                    </div>
+                                    <!-- Single Feature End -->
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <!-- Single Feature Start -->
+                                    <div class="single-feature mb-30">
+                                        <div class="feature-image">
+                                            <img src="/assets/images/icons/feature-3.png" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4 class="title">3 dias de regresso</h4>
+                                            <p class="short-desc">Não satisfeito. Não se preocupe, devolva o
+                                                artigo no prazo de 3 dias.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- Single Feature End -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <%- include('footer.ejs', {category}) %>
+
+    </div>
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+
+    <!-- All jquery file included here -->
+    <script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+
+    <!-- <script src="/assets/js/vendor/bootstrap.min.js"></script> -->
+    <script src="/assets/js/plugins/plugins.js"></script>
+
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/addToCart.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const pillsTabs = document.querySelectorAll('[data-mdb-toggle="pill"]');
+            pillsTabs.forEach(tab => {
+                tab.addEventListener('shown.bs.tab', function (event) {
+                    const activeTab = event.target;
+                    const otherTabs = Array.from(pillsTabs).filter(tab => tab !== activeTab);
+                    otherTabs.forEach(tab => {
+                        tab.style.backgroundColor = ''; // Reset background color for inactive tabs
+                        tab.style.color = ''; // Reset text color for inactive tabs
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+
+
+</html>
