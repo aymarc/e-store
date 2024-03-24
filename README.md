@@ -1,0 +1,1 @@
+Note: In a real project I would not commit my env file. 
